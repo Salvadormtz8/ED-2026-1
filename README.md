@@ -1,4 +1,3 @@
-# ED-2026-1
 # Estructura-Datos
 Tareas de Estructuras de Datos.
 
