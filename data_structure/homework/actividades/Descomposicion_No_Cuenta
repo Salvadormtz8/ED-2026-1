@@ -1,0 +1,19 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int main(){
+	int i;
+	int n, valor;
+	
+	printf("Dame tu numero de cuenta: \n");
+	scanf("%d",&n);
+	valor = n % 10;
+	
+	for(i =1; i<=10; i++){
+		if(valor != i-1)
+			printf("|%d| ", i*2);
+		else
+			printf("|-1| ");
+	}
+	return 0;
+}
