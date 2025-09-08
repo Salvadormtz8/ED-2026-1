@@ -1,0 +1,54 @@
+//factoriales recursivo y interativo 
+
+#include<stdio.h>
+
+fact_it(int n,int a){
+	if (n < 0)
+		return 0;
+	else if (n == 0)
+		return a;
+	else 
+		return fact_it (n-1, n*a);
+}
+
+fact_rec(n){
+	if (n < 0)
+		return 0;
+	else if(n == 0)
+		return 1;
+	else 
+		return n * fact_rec(n-1);
+}
+
+int main(){
+	int a=1, z=1;
+	long int n, f, r;
+	printf("Dame un numero: ");
+	scanf("%d", &n);
+	while(z==1){
+		printf("\nResolver con:\n1. Iterativo\n2. Recursion\n3. Automatico\n\n");
+		scanf("%i", &r);
+		switch(r){
+			case 1:
+				f= fact_it(n,a);
+				z=0;
+				break;
+			case 2:
+				fact_rec(n);
+				z=0;
+				break;
+			case 3:
+				if(n<6)
+					f= fact_it(n,a);
+				else
+					fact_rec(n);
+				z=0;
+				break;
+			default:
+				printf("\nOpcion no valida");
+		};
+	}
+		
+	printf("\nEl resultado es: %d",f);
+	return 0;
+}
