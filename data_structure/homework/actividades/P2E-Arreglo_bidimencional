@@ -1,0 +1,54 @@
+//Matriz de nx3
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main() 
+{
+    int a=0, b=0;
+	int c, i;
+    char nombre[25];
+    int edad, cali;
+    float prmd, prmcl;
+    
+    printf("Cantidad de alumnos: ");
+    scanf("%d",&c);
+
+    char **alum=(char**)malloc(c*sizeof(char*));
+    for (i=0; i<c; i++) 
+	{
+        alum[i]=(char*)malloc(25*sizeof(char)+10*sizeof(char));
+    }
+
+    for (i=0; i<c; i++) {
+        printf("Nombre %d: ",i+1);
+        scanf("%s",&nombre);
+        printf("Edad %d: ",i+1);
+        scanf("%d",&edad);
+        printf("Calificacion %d: ",162,i+1);
+        scanf("%d",&cali);
+        snprintf(alum[i],25,"%s",nombre);
+        snprintf(alum[i]+25,5,"%d",edad);
+        snprintf(alum[i]+30,5,"%d",cali);
+        a+=edad;
+        b+=cali;
+    }
+
+    prmd=(float)a/c;
+    prmcl=(float)b/c;
+    printf("\nEl promedio de edad es: %.2f\n",prmd);
+    printf("Promedio de calificacion: %.2f\n",162,prmcl);
+    printf("\nNombres en orden inverso:\n");
+    for (i=c-1; i>=0; i--) 
+	{
+        printf("%s\n",alum[i]);
+    }
+
+    for (i=0; i<c; i++) 
+	{
+        free(alum[i]);
+    }
+    free(alum);
+    return 0;
+}
