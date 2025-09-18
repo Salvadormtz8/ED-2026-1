@@ -1,1 +1,59 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+int main() {
+    char abc[100];
+    int i, j;
+    int filas;
+    int pos;
+
+    printf("Escriba la palabra en MAYUSCULAS: ");
+    scanf("%s", abc);
+    filas = strlen(abc);
+    char **matrix = (char **)malloc(filas * sizeof(char *));
+    if (matrix == NULL) {
+        printf("Error: memoria no asignada\n");
+        return -1;
+    }
+
+    for (i = 0; i < filas; i++) {
+        if (!isupper(abc[i])) {
+            matrix[i] = NULL;  
+        } else {
+        	pos = abc[i] - 'A' + 1;
+            matrix[i] = (char *)malloc((pos + 1) * sizeof(char));
+            if (matrix[i] == NULL) {
+                printf("Error: memoria no asignada\n");
+                return -1;
+            }
+            for (j = 0; j < pos; j++) {
+                matrix[i][j] = abc[i];
+            }
+            matrix[i][pos] = '\0';
+        }
+    }
+
+    for (i = 0; i < filas; i++) {
+        if (matrix[i] == NULL) {
+            printf("NULL\n");
+        } else {
+            for (j = 0; j < strlen(matrix[i]); j++) {
+                printf("%c |", matrix[i][j]);
+            }
+            printf("\n");
+        }
+    }
+    printf("NULL\n");
+
+    for (i = 0; i < filas; i++) {
+        if (matrix[i] != NULL) {
+            free(matrix[i]);
+        }
+    }
+    free(matrix);
+
+    return 0;
+}
 
