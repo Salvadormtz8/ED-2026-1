@@ -5,6 +5,9 @@
 #include "dlist.h"
 #include "operaciones.h"
 
+//Laureano Sanches Yoshua Barush
+//Martinez Galvan Jesus Salvador
+
 void mostrarAyuda() {
     printf("\n=== CALCULADORA ===\n");
     printf("Uso: ./calc [OPCIONES] [EXPRESIÓN]\n\n");
