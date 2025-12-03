@@ -2,22 +2,23 @@
 #define DLIST_H
 
 typedef struct Nodo {
-    char digito;
-    struct Nodo *anterior;
+    char dato[MAX];
     struct Nodo *siguiente;
+    struct Nodo *anterior;
 } Nodo;
 
 typedef struct {
-    Nodo *inicio;
-    Nodo *fin;
-    int decimales;
-    int negativo;
-} BigNumber;
+    Nodo *cabeza;
+    Nodo *cola;
+    int tamano;
+} ListaCircular;
 
-BigNumber* crearBigNumber();
-void liberarBigNumber(BigNumber *num);
-void agregarDigito(BigNumber *num, char digito);
-void imprimirBigNumber(BigNumber *num);
-BigNumber* stringToBigNumber(const char *str);
+ListaCircular* crearLista();
+void destruirLista(ListaCircular *lista);
+void insertarInicio(ListaCircular *lista, const char *dato);
+void insertarFinal(ListaCircular *lista, const char *dato);
+void eliminarNodo(ListaCircular *lista, Nodo *nodo);
+void mostrarLista(ListaCircular *lista);
+void guardarEnArchivo(ListaCircular *lista, const char *nombreArchivo);
 
 #endif
