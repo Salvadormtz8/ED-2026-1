@@ -13,5 +13,6 @@ int pilaVacia(Pila *p);
 void apilar(Pila *p, const char *elemento);
 char *desapilar(Pila *p);
 char *consultarCima(Pila *p);
+void limpiarPila(Pila *pila);
 
 #endif
