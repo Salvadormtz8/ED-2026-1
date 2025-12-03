@@ -1,0 +1,41 @@
+CC = gcc
+CFLAGS = -Wall -Wextra -g -lm
+TARGET = calc
+OBJS = calc.o stack.o dlist.o operaciones.o
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS) -lm
+
+calc.o: calc.c stack.h dlist.h operaciones.h
+	$(CC) $(CFLAGS) -c calc.c
+
+stack.o: stack.c stack.h
+	$(CC) $(CFLAGS) -c stack.c
+
+dlist.o: dlist.c dlist.h
+	$(CC) $(CFLAGS) -c dlist.c
+
+operaciones.o: operaciones.c operaciones.h stack.h
+	$(CC) $(CFLAGS) -c operaciones.c
+
+clean:
+	rm -f $(OBJS) $(TARGET) *.o
+
+install: $(TARGET)
+	cp $(TARGET) /usr/local/bin/
+
+help:
+	@echo "=== Calculadora ==="
+	@echo "Comandos disponibles:"
+	@echo "  make         - Compilar el programa"
+	@echo "  make clean   - Limpiar archivos compilados"
+	@echo "  make install - Instalar en /usr/local/bin"
+	@echo "  make help    - Mostrar esta ayuda"
+	@echo ""
+	@echo "Uso del programa:"
+	@echo "  ./calc -h                - Mostrar ayuda"
+	@echo "  ./calc \"3+4*5\"          - Evaluar expresión"
+	@echo "  ./calc -p \"(a+b)^c\"     - Convertir a postfija"
+	@echo "  ./calc -r \"x+y*z\" -s    - Convertir a prefija con pasos"
